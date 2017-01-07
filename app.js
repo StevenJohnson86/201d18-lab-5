@@ -113,10 +113,17 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(testArray){ //eslint-disable-line
+  var testArrayProd1 = sumAndMultiply(testArray[0],testArray[1],testArray[2]);
+  console.log('testArrayProd1 =' + testArrayProd1);
 
+  var testArrayString = testArray.toString();
+  var message = 'The numbers ' + testArrayString + ' have a product of ' + testArrayProd1[1] + '.';
+  console.log('message = ' + message);
+
+  return [testArrayProd1[1],message];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray([2,3,4]);
+testMultiplyArray([2,3,4]);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
