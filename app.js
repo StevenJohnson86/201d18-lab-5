@@ -87,8 +87,8 @@ function sumArray(testArray){ //eslint-disable-line
   for (var index = 0; index < testArray.length; index++) {
     sum1 = sum(sum1, testArray[index])[0];
   }
-  console.log('sum =' + sum1);
-  var message = testArray.join(', ') + ' was passed in as an array of numbers, and ' + sum1 + ' is their sum.';
+  console.log('sum1 = ' + sum1);
+  var message = testArray.join(',') + ' was passed in as an array of numbers, and ' + sum1 + ' is their sum.';
   console.log('message = ' + message);
 
   return [sum1, message];
@@ -112,14 +112,15 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(testArray){ //eslint-disable-line
-  var testArrayProd1 = sumAndMultiply(testArray[0],testArray[1],testArray[2]);
-  console.log('testArrayProd1 =' + testArrayProd1);
-
-  var testArrayString = testArray.toString();
-  var message = 'The numbers ' + testArrayString + ' have a product of ' + testArrayProd1[1] + '.';
+  var prod = 1;
+  for (var index = 0; index < testArray.length; index++) {
+    prod = multiply(prod, testArray[index])[0];
+  }
+  console.log('prod = ' + prod);
+  var message = 'The numbers ' + testArray.join(',') + ' have a product of ' + prod + '.';
   console.log('message = ' + message);
 
-  return [testArrayProd1[1],message];
+  return [prod, message];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
