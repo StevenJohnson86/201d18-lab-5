@@ -52,18 +52,16 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a,b,c){ //eslint-disable-line
-  console.log('a,b,c', a, b, c);
-  var sum1 = sum(a, b);
-  console.log('sum1 = ', sum1);
-  var sum2 = sum(sum1[0], c);
-  console.log('sum2 = ', sum2);
-  var product1 = multiply(a, b);
-  var product2 = multiply(product1[0], c);
-  var messageSum = a + ' and ' + b + ' and ' + c + ' sum to ' + sum2[0] + '.';
-  var messageProduct = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + product2[0] + '.';
+  //console.log('a,b,c', a, b, c);
+  var sum1 = sum(sum(a, b)[0], c)[0];
+  //console.log('sum1 = ', sum1);
+  var product1 = multiply(multiply(a, b)[0], c)[0];
+  //console.log('product1 = ', product1);
+  var messageSum = a + ' and ' + b + ' and ' + c + ' sum to ' + sum1 + '.';
+  var messageProduct = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + product1 + '.';
 //  console.log(messageSum);
 //  console.log(messageProduct);
-  return [sum2[0], product2[0], messageSum, messageProduct];
+  return [sum1, product1, messageSum, messageProduct];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -85,14 +83,15 @@ Test this function by hand in the console to get it working, and when you think 
 var testArray = [2,3,4]; //eslint-disable-line
 
 function sumArray(testArray){ //eslint-disable-line
-  var testArraySum1 = sumAndMultiply(testArray[0],testArray[1],testArray[2]);
-  console.log('testArraySum1 =' + testArraySum1);
-
-  var testArrayString = testArray.toString();
-  var message = testArrayString + ' was passed in as an array of numbers, and ' + testArraySum1[0] + ' is their sum.';
+  var sum1 = 0;
+  for (var index = 0; index < testArray.length; index++) {
+    sum1 = sum(sum1, testArray[index])[0];
+  }
+  console.log('sum =' + sum1);
+  var message = testArray.join(', ') + ' was passed in as an array of numbers, and ' + sum1 + ' is their sum.';
   console.log('message = ' + message);
 
-  return [testArraySum1[0],message];
+  return [sum1, message];
 }
 
 // Here is the test for sumArray(); uncomment it to run it
